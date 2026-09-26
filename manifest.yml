@@ -7,25 +7,28 @@ default_target: DEV
 targets:
   DEV:
     account_identifier: DGGGORW-ISB25540
-    project_name: PLATFORM.DCM_STORAGE.DEV_LANDING_DCM
-    project_owner: DEV_ADMIN
+    project_name: DEV_INFRASTRUCTURE.ADMIN.INFRASTRUCTURE_DCM
+    project_owner: DEV_DCM_INFRASTRUCTURE
     templating_config: DEV_TEMPLATING
   TEST:
     account_identifier: DGGGORW-ISB25540
-    project_name: PLATFORM.DCM_STORAGE.TEST_LANDING_DCM
-    project_owner: TEST_ADMIN
+    project_name: TEST_INFRASTRUCTURE.ADMIN.INFRASTRUCTURE_DCM
+    project_owner: TEST_DCM_INFRASTRUCTURE
     templating_config: TEST_TEMPLATING
   PROD:
     account_identifier: DGGGORW-ISB25540
-    project_name: PLATFORM.DCM_STORAGE.PROD_LANDING_DCM
-    project_owner: PROD_ADMIN
+    project_name: PROD_INFRASTRUCTURE.ADMIN.INFRASTRUCTURE_DCM
+    project_owner: PROD_DCM_INFRASTRUCTURE
     templating_config: PROD_TEMPLATING
 
 templating:
   configurations:
     DEV_TEMPLATING:
-      database: DEV_LANDING
+      env: DEV
+      landing_database: LANDING
     TEST_TEMPLATING:
-      database: TEST_LANDING
+      env: TEST
+      landing_database: LANDING
     PROD_TEMPLATING:
-      database: PROD_LANDING
+      env: PROD
+      landing_database: LANDING
