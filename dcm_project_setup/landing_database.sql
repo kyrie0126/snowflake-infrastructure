@@ -50,3 +50,19 @@ type = oidc
 issuer = 'https://token.actions.githubusercontent.com'
 subject = 'repository_id:1390942328:environment:prod'
 );
+
+grant role test_dcm_landing to user test_svc_landing_github;
+
+grant role prod_dcm_landing to user prod_svc_landing_github;
+
+
+-- temporary granting myself test and prod so that I can manually seed each database
+use role useradmin;
+grant role test_dcm_landing to user kyrie;
+grant role prod_dcm_landing to user kyrie;
+
+-- do the manual seed using data from the seed dir in snowflake-landing repo
+-- this is performed using the Snowsight UI to upload tsv files to FISHING_ERP_RAW_DATA_STAGE
+use role useradmin;
+revoke role test_dcm_landing from user kyrie;
+revoke role prod_dcm_landing from user kyrie;
