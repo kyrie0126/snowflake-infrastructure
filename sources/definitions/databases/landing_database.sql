@@ -41,6 +41,8 @@ grant select on future views in database {{ env }}_{{ landing_database }} to dat
 grant create schema on database {{ env }}_{{ landing_database }} to database role {{ env }}_{{ landing_database }}.developer; 
 grant create table on future schemas in database {{ env }}_{{ landing_database }} to database role {{ env }}_{{ landing_database }}.developer;
 grant create view on future schemas in database {{ env }}_{{ landing_database }} to database role {{ env }}_{{ landing_database }}.developer;
+grant create stage on future schemas in database {{ env }}_{{ landing_database }} to database role {{ env }}_{{ landing_database }}.developer;
+grant create file format on future schemas in database {{ env }}_{{ landing_database }} to database role {{ env }}_{{ landing_database }}.developer;
 -- since nothing is created yet and developer will be doing all future creating, no future grants needed
 
 
