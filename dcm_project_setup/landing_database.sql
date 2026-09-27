@@ -35,18 +35,18 @@ revoke role prod_dcm_landing from user kyrie;
 
 use role useradmin;
 
--- create user if not exists test_svc_landing_github
--- type = service
--- workload_identity = (
--- type = oidc
--- issuer = 'https://token.actions.githubusercontent.com'
--- subject = 'repository_id::environment:test'
--- );
+create user if not exists test_svc_landing_github
+type = service
+workload_identity = (
+type = oidc
+issuer = 'https://token.actions.githubusercontent.com'
+subject = 'repository_id:1390942328:environment:test'
+);
 
--- create user if not exists prod_svc_landing_github
--- type = service
--- workload_identity = (
--- type = oidc
--- issuer = 'https://token.actions.githubusercontent.com'
--- subject = 'repository_id::environment:prod'
--- );
+create user if not exists prod_svc_landing_github
+type = service
+workload_identity = (
+type = oidc
+issuer = 'https://token.actions.githubusercontent.com'
+subject = 'repository_id:1390942328:environment:prod'
+);
