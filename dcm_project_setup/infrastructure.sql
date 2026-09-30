@@ -83,6 +83,14 @@ grant manage grants on account to role dev_dcm_infrastructure;
 grant manage grants on account to role test_dcm_infrastructure;
 grant manage grants on account to role prod_dcm_infrastructure;
 
+-- priv to create warehouses
+-- there will only be a single dev/test/prod xs warehouse for now
+-- this will make granting usage on warehouses easier
+use role sysadmin;
+grant create warehouse on account to role dev_dcm_infrastructure;
+grant create warehouse on account to role test_dcm_infrastructure;
+grant create warehouse on account to role prod_dcm_infrastructure;
+
 -- priv to create dcm roles that will be used for objects within a project
 use role securityadmin;
 grant create role on account to role dev_dcm_infrastructure;
@@ -123,3 +131,12 @@ create dcm project prod_infrastructure.admin.infrastructure_dcm;
 use role useradmin;
 revoke role test_dcm_infrastructure from user kyrie;
 revoke role prod_dcm_infrastructure from user kyrie;
+
+
+-- ============================================================================
+-- CREATE DESIGNATED DEV/TEST/PROD WAREHOUSES
+-- ============================================================================
+-- gotta follow the same format at DCM
+-- grant myself the test/prod roles
+-- use each role to create a warehouse so the roles own them
+-- in the future, service users can manage usage
