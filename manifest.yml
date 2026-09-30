@@ -25,13 +25,16 @@ templating:
   configurations:
     DEV_TEMPLATING:
       env: DEV
+      warehouse_xs: DEV_WH_XS
       landing_database: LANDING
       experiment_app: EXPERIMENT_APP
     TEST_TEMPLATING:
       env: TEST
+      warehouse_xs: TEST_WH_XS
       landing_database: LANDING
       experiment_app: EXPERIMENT_APP
     PROD_TEMPLATING:
       env: PROD
+      warehouse_xs: PROD_WH_XS
       landing_database: LANDING
       experiment_app: EXPERIMENT_APP
