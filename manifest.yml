@@ -26,9 +26,12 @@ templating:
     DEV_TEMPLATING:
       env: DEV
       landing_database: LANDING
+      experiment_app: EXPERIMENT_APP
     TEST_TEMPLATING:
       env: TEST
       landing_database: LANDING
+      experiment_app: EXPERIMENT_APP
     PROD_TEMPLATING:
       env: PROD
       landing_database: LANDING
+      experiment_app: EXPERIMENT_APP
