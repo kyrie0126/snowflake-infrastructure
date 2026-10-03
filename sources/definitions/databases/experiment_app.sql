@@ -76,7 +76,7 @@ define schema {{ env }}_{{ experiment_app }}.pipeline
     comment = 'Transformations supporting application data';
 
 grant usage on schema {{ env }}_{{ experiment_app }}.pipeline to database role {{ env }}_{{ experiment_app }}.developer;
-
+grant create view on schema {{ env }}_{{ experiment_app }}.pipeline to database role {{ env }}_{{ experiment_app }}.developer;
 grant create dynamic table on schema {{ env }}_{{ experiment_app }}.pipeline to database role {{ env }}_{{ experiment_app }}.developer;
 grant create stream on schema {{ env }}_{{ experiment_app }}.pipeline to database role {{ env }}_{{ experiment_app }}.developer;
 grant create task on schema {{ env }}_{{ experiment_app }}.pipeline to database role {{ env }}_{{ experiment_app }}.developer;
