@@ -64,6 +64,11 @@ grant usage on database dev_infrastructure to role dev_dcm_infrastructure;
 grant usage on database test_infrastructure to role test_dcm_infrastructure;
 grant usage on database prod_infrastructure to role prod_dcm_infrastructure;
 
+grant usage on schema dev_infrastructure.admin to role dev_dcm_infrastructure;
+grant usage on schema test_infrastructure.admin to role test_dcm_infrastructure;
+grant usage on schema prod_infrastructure.admin to role prod_dcm_infrastructure;
+
+
 grant create dcm project on schema dev_infrastructure.admin to role dev_dcm_infrastructure;
 grant create dcm project on schema test_infrastructure.admin to role test_dcm_infrastructure;
 grant create dcm project on schema prod_infrastructure.admin to role prod_dcm_infrastructure;
@@ -115,7 +120,7 @@ GRANT ROLE prod_dcm_infrastructure TO USER prod_svc_infrastructure_github;
 -- 2a. use dcm role
 -- 2b. create dcm project in environment's admin schema
 -- 3. revoke test/prod dcm roles from user
-
+use role useradmin;
 grant role test_dcm_infrastructure to user kyrie;
 grant role prod_dcm_infrastructure to user kyrie;
 
@@ -140,3 +145,19 @@ revoke role prod_dcm_infrastructure from user kyrie;
 -- grant myself the test/prod roles
 -- use each role to create a warehouse so the roles own them
 -- in the future, service users can manage usage
+use role useradmin;
+grant role test_dcm_infrastructure to user kyrie;
+grant role prod_dcm_infrastructure to user kyrie;
+
+use role dev_dcm_infrastructure;
+create warehouse dev_wh_xs;
+
+use role test_dcm_infrastructure;
+create warehouse test_wh_xs;
+
+use role prod_dcm_infrastructure;
+create warehouse prod_wh_xs;
+
+use role useradmin;
+revoke role test_dcm_infrastructure from user kyrie;
+revoke role prod_dcm_infrastructure from user kyrie;
