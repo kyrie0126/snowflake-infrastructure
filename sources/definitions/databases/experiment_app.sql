@@ -67,7 +67,10 @@ define schema {{ env }}_{{ experiment_app }}.data
     comment = 'Application data and supporting tables';
 
 grant usage on schema {{ env }}_{{ experiment_app }}.data to database role {{ env }}_{{ experiment_app }}.developer;
+-- supporting the read-write tables managed by the application
 grant create table on schema {{ env }}_{{ experiment_app }}.data to database role {{ env }}_{{ experiment_app }}.developer;
+-- supporting the read-only tables from pipeline
+grant create dynamic table on schema {{ env }}_{{ experiment_app }}.data to database role {{ env }}_{{ experiment_app }}.developer;
 
 -- ==================================================================
 -- SCHEMA: PIPELINE
